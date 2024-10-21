@@ -8,11 +8,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Feed</title>
+    <title>Classic Recipe Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f4f4f4; /* Light gray background */
+            font-family: 'Libre Baskerville', serif; /* Classic serif font */
+            background-color: #f9f9f9; /* Light cream background */
             margin: 0;
             padding: 20px;
         }
@@ -21,65 +22,52 @@
             max-width: 900px;
             margin: auto;
             background: #ffffff; /* White background for the container */
-            padding: 30px;
+            padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
             text-align: center;
-            color: #5d5da3; /* Accent color */
-            margin-bottom: 30px;
-            font-size: 2em;
+            font-family: 'Playfair Display', serif; /* Elegant font */
+            color: #5A2A1D; /* Dark brown for titles */
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
         }
 
-        .search-bar {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .search-bar input[type="text"] {
-            padding: 12px;
-            width: 75%;
-            border: 1px solid #ccc; /* Gray border */
-            border-radius: 5px;
-            font-size: 1em;
-        }
-
-        .search-bar button {
-            padding: 12px 20px;
-            background-color: #5d5da3; /* Accent color */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .search-bar button:hover {
-            background-color: #E6E6FA; /* Light lavender on hover */
-            color: #333; /* Dark text on hover */
-        }
-
-        .job-post {
+        .recipe-post {
             border: 1px solid #ddd; /* Light gray border */
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background-color: #f7f7f7; /* Slightly darker gray background */
+            padding: 20px; /* Adjusted padding */
+            margin-bottom: 30px;
+            border-radius: 10px; /* More rounded corners */
+            background-color: #fefefe; /* Soft white background for posts */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s;
+            font-family: 'Libre Baskerville', serif; /* Classic serif font */
+            color: #333; /* Dark gray color */
+            max-width: 700px; /* Adjusted width for a medium size */
+            margin-left: auto; /* Center align */
+            margin-right: auto; /* Center align */
         }
 
-        .job-post:hover {
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        .recipe-post:hover {
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
         }
 
-        .job-title {
-            font-size: 1.8em;
-            color: #333; /* Dark text */
+        .recipe-title {
+            color: #A0522D; /* Sienna color for recipe titles */
+            font-size: 2em; /* Larger font size for titles */
             margin: 0;
+            font-family: 'Playfair Display', serif; /* Elegant font for titles */
             text-align: center;
+            border-bottom: 2px solid #ddd; /* Underline effect with thicker border */
+            padding-bottom: 10px;
+            background-color: #ffebcd; /* Light background color for titles */
+            padding: 10px; /* Padding around the title */
+            border-radius: 5px; /* Slightly round the corners */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
         }
 
         .logo {
@@ -88,15 +76,25 @@
         }
 
         .logo img {
-            max-height: 100px; /* Adjust as needed */
-            max-width: 100px; /* Adjust as needed */
+            max-height: 300px; /* Adjust as needed */
+            max-width: 100%; /* Responsive image */
+            border-radius: 8px; /* Slightly round the image corners */
         }
 
-        .company, .location, .salary, .posted-date, .application-deadline, .user {
+        .details {
             color: #555; /* Medium gray text */
             margin: 8px 0;
             font-size: 1.1em;
             text-align: center;
+        }
+
+        /* Style for bold labels */
+        .label {
+            font-weight: bold; /* Make label bold */
+            color: #A0522D; /* Sienna color for contrast */
+            text-align: left; /* Align labels to the left */
+            margin-bottom: 5px; /* Space between label and text */
+            font-size: 1.1em; /* Slightly larger font size for labels */
         }
 
         .description {
@@ -106,22 +104,59 @@
             text-align: center;
         }
 
+        .ingredient-list {
+            padding-left: 20px; /* Indent the list */
+            margin: 10px 0;
+            text-align: left; /* Align text to the left for readability */
+            color: #333; /* Ensure text color is dark for visibility */
+            font-size: 1em; /* Adjust font size */
+            line-height: 1.6; /* Increase line height for readability */
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .search-bar button {
+            padding: 10px 15px;
+            background-color: #5A2A1D; /* Dark brown */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            margin-left: 5px;
+        }
+
+        .search-bar button:hover {
+            background-color: #7B4A3A; /* Lighter brown on hover */
+        }
+
         .apply-button {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 12px 20px;
-            background-color: #5d5da3; /* Accent color */
+            background-color: #5A2A1D; /* Dark brown for buttons */
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s;
             font-size: 1em;
             text-align: center;
         }
 
         .apply-button:hover {
-            background-color: #E6E6FA; /* Light lavender on hover */
-            color: #333; /* Dark text on hover */
+            background-color: #7B4A3A; /* Lighter brown on hover */
         }
     </style>
 </head>
@@ -140,23 +175,22 @@
         </div>
 
         {% for i in data %}
-        <div class="job-post">
-            <h2 class="job-title">{{ i.RecipeTitle }} {{i.id}}</h2>
+        <div class="recipe-post">
+            <h2 class="recipe-title">{{ i.RecipeTitle }}</h2>
             <div class="logo">
-                <img src="/{{ i.Image }}" alt="Company Logo">
+                <img src="/{{ i.Image }}" alt="{{ i.RecipeTitle }}">
             </div>
-            <div class="company">Instructor: <strong>{{ i.Instructor }}</strong></div>
-            <div class="company">Nutritional_Info: <strong>{{ i.Nutritional_Info }}</strong></div>
-            <div class="description">Ingredients: <strong>{{ i.Ingredients }}</strong></div>
-            <div class="salary">Category: <strong>{{ i.Category }}</strong></div>
-            <div class="salary">Tag: <strong>{{ i.Tag }}</strong></div>
-            <div class="salary">DifficultyLevel: <strong>{{ i.DifficultyLevel }}</strong></div>
-            <div class="application-deadline">PreparetionTime: <strong>{{ i.PreparetionTime }}</strong></div>
-            <div class="application-deadline">CookingTime: <strong>{{ i.CookingTime }}</strong></div>
-            <div class="application-deadline">TotalTime: <strong>{{ i.TotalTime }}</strong></div>
+            <div class="details"><span class="label">Instructor:</span> <strong>{{ i.Instructor }}</strong></div>
+            <div class="details"><span class="label">Nutritional Info:</span> <strong>{{ i.Nutritional_Info }}</strong></div>
+            <div class="details"><span class="label">Ingredients:</span> <strong>{{ i.Ingredients }}</strong></div>
 
-            <a href="{% url 'recipeview' i.id %}" class="apply-button">View Job</a>                
-
+            <div class="details"><span class="label">Category:</span> <strong>{{ i.Category }}</strong></div>
+            <div class="details"><span class="label">Tag:</span> <strong>{{ i.Tag }}</strong></div>
+            <div class="details"><span class="label">Difficulty Level:</span> <strong>{{ i.DifficultyLevel }}</strong></div>
+            <div class="details"><span class="label">Preparation Time:</span> <strong>{{ i.PreparetionTime }}</strong></div>
+            <div class="details"><span class="label">Cooking Time:</span> <strong>{{ i.CookingTime }}</strong></div>
+            <div class="details"><span class="label">Total Time:</span> <strong>{{ i.TotalTime }}</strong></div>
+            <a href="{% url 'postview' i.id %}" class="apply-button">View Recipe</a>
         </div>
         {% endfor %}
     </div> 

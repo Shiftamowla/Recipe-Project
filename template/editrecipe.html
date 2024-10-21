@@ -37,20 +37,24 @@ div {
 </style>
 <body>
 
-<h3>Add Recipe</h3>
+<h3>Edit Recipe</h3>
 
 <div>
   <form action=""  method="POST" enctype="multipart/form-data" >
     {% csrf_token %}
+    
+    {% for i in data %}
+      
+      
 
     <label for="fname">ID</label>
     <input type="text" id="fname" value="{{i.id}}" name="id" readonly>
 
     <label for="fname">RecipeTitle</label>
-    <input type="text" id="fname" value="{{i.RecipeTitle}}" name="RecipeTitle" placeholder="Your name..">
+    <input type="text" id="fname" value="{{i.RecipeTitle}}" name="RecipeTitle" >
 
     <label for="lname">Nutritional_Info</label>
-    <input type="text" id="lname" value="{{i.Nutritional_Info}}" name="Nutritional_Info" placeholder="Your last name..">
+    <input type="text" id="lname" value="{{i.Nutritional_Info}}" name="Nutritional_Info" >
 
     <label for="country">Category</label>
     <select id="country" value="{{i.Category}}" name="Category">
@@ -73,23 +77,25 @@ div {
     </select>
 
     <label for="lname">Ingredients</label>
-    <input type="text" id="lname" value="{{i.Ingredients}}" name="Ingredients" placeholder="Your last name..">
+    <input type="text" id="lname" value="{{i.Ingredients}}" name="Ingredients" >
 
     <label for="lname">Instructor</label>
-    <input type="text" id="lname" value="{{i.Instructor}}" name="Instructor" placeholder="Your last name..">
+    <input type="text" id="lname" value="{{i.Instructor}}" name="Instructor" >
     
     <label for="lname">Image</label>
-    <input type="file" id="lname" value="/{{i.Image}}" name="Image" placeholder="Your last name..">
-    <input type="file" id="lname" value="/{{i.Image}}" name="Image_old" placeholder="Your last name..">
+    <input type="file" id="lname" value="/{{i.Image}}" name="Image" >
+    <input type="text" id="lname" value="/{{i.Image}}" name="Image_old" >
 
     <label for="lname">PreparetionTime</label>
-    <input type="text" id="lname" value="{{i.PreparetionTime}}" name="PreparetionTime" placeholder="Your last name..">
+    <input type="date" id="lname" value="{{i.PreparetionTime}}" name="PreparetionTime">
 
     <label for="lname">CookingTime</label>
-    <input type="text" id="lname" value="{{i.CookingTime}}" name="CookingTime" placeholder="Your last name..">
+    <input type="date" id="lname" value="{{i.CookingTime}}" name="CookingTime" >
 
     <label for="lname">TotalTime</label>
-    <input type="text" id="lname" value="{{i.TotalTime}}" name="TotalTime" placeholder="Your last name..">
+    <input type="date" id="lname" value="{{i.TotalTime}}" name="TotalTime">
+    {% endfor %}
+
 
     <input type="submit" value="Submit">
   </form>

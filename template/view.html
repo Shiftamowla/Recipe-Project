@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Profile Page</title>
+    <title>Recipe Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,7 +85,7 @@
         {% for i in Job %}
         <header class="profile-header">
             <img src="/{{ i.Image }}" alt="Company Logo" class="company-logo">
-            <h1>Recipe Title</h1>
+            <h1>{{ i.RecipeTitle }}</h1>
             <p class="company-name">{{ i.RecipeTitle }}</p>
         </header>
         

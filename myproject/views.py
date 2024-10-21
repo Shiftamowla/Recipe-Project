@@ -174,7 +174,7 @@ def search(request):
         'query':query
     }
     
-    return render(request,"search.html",context)
+    return render(request,"seaech.html",context)
 
 def password_change(req):
     current_user=req.user

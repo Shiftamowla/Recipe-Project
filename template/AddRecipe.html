@@ -2,90 +2,122 @@
 
 {% block body %}
 <!DOCTYPE html>
-<html>
-<style>
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Libre Baskerville', serif; /* Classic serif font */
+            background: url('https://www.toptal.com/designers/subtlepatterns/patterns/white-paper.png'); /* Subtle background pattern */
+            margin: 0;
+            padding: 20px;
+        }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+        h3 {
+            text-align: center;
+            color: #5A2A1D; /* Dark brown for headings */
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
+        div {
+            border-radius: 8px;
+            background-color: #f2f2f2;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
+        input[type=text], select, input[type=file] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1em; /* Consistent font size */
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #5A2A1D; /* Dark brown */
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        input[type=submit]:hover {
+            background-color: #7B4A3A; /* Lighter brown on hover */
+            transform: scale(1.02); /* Slightly enlarge on hover */
+        }
+
+        label {
+            font-weight: bold;
+            color: #333; /* Dark text for labels */
+            margin-bottom: 5px;
+            display: block; /* Ensures label appears above input */
+        }
+    </style>
+</head>
 <body>
 
-<h3>Edit Recipe</h3>
+<h3>Add Recipe</h3>
 
 <div>
-  <form action="{% url 'AddRecipe' %} "  method="POST" enctype="multipart/form-data" >
+  <form action="{% url 'AddRecipe' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     
-    <label for="fname">RecipeTitle</label>
-    <input type="text" id="fname" name="RecipeTitle" placeholder="Your name..">
+    <label for="recipe_title">Recipe Title</label>
+    <input type="text" id="recipe_title" name="RecipeTitle" placeholder="Enter recipe title..." required>
 
-    <label for="lname">Nutritional_Info</label>
-    <input type="text" id="lname" name="Nutritional_Info" placeholder="Your last name..">
+    <label for="nutritional_info">Nutritional Info</label>
+    <input type="text" id="nutritional_info" name="Nutritional_Info" placeholder="Enter nutritional info..." required>
 
-    <label for="country">Category</label>
-    <select id="country" name="Category">
+    <label for="category">Category</label>
+    <select id="category" name="Category" required>
       <option value="breakfast">Breakfast</option>
       <option value="lunch">Lunch</option>
       <option value="dinner">Dinner</option>
     </select>
 
-    <label for="country">DifficultyLevel</label>
-    <select id="country" name="DifficultyLevel">
-      <option value="high">high</option>
-      <option value="medium">medium</option>
-      <option value="low">low</option>
+    <label for="difficulty_level">Difficulty Level</label>
+    <select id="difficulty_level" name="DifficultyLevel" required>
+      <option value="high">High</option>
+      <option value="medium">Medium</option>
+      <option value="low">Low</option>
     </select>
 
-    <label for="country">Tag</label>
-    <select id="country" name="Tag">
+    <label for="tag">Tag</label>
+    <select id="tag" name="Tag" required>
       <option value="vegetarian">Vegetarian</option>
       <option value="non-vegetarian">Non-Vegetarian</option>
     </select>
 
-    <label for="lname">Ingredients</label>
-    <input type="text" id="lname" name="Ingredients" placeholder="Your last name..">
+    <label for="ingredients">Ingredients</label>
+    <input type="text" id="ingredients" name="Ingredients" placeholder="Enter ingredients..." required>
 
-    <label for="lname">Instructor</label>
-    <input type="text" id="lname" name="Instructor" placeholder="Your last name..">
+    <label for="instructor">Instructor</label>
+    <input type="text" id="instructor" name="Instructor" placeholder="Enter instructor name..." required>
     
-    <label for="lname">Image</label>
-    <input type="file" id="lname" name="Image" placeholder="Your last name..">
+    <label for="image">Image</label>
+    <input type="file" id="image" name="Image" required>
 
-    <label for="lname">PreparetionTime</label>
-    <input type="text" id="lname" name="PreparetionTime" placeholder="Your last name..">
+    <label for="preparation_time">Preparation Time</label>
+    <input type="text" id="preparation_time" name="PreparetionTime" placeholder="Enter preparation time..." required>
 
-    <label for="lname">CookingTime</label>
-    <input type="text" id="lname" name="CookingTime" placeholder="Your last name..">
+    <label for="cooking_time">Cooking Time</label>
+    <input type="text" id="cooking_time" name="CookingTime" placeholder="Enter cooking time..." required>
 
-    <label for="lname">TotalTime</label>
-    <input type="text" id="lname" name="TotalTime" placeholder="Your last name..">
+    <label for="total_time">Total Time</label>
+    <input type="text" id="total_time" name="TotalTime" placeholder="Enter total time..." required>
 
     <input type="submit" value="Submit">
   </form>

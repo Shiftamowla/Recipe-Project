@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils import timezone
 
 class Custom_user(AbstractUser):
     USER=[
@@ -58,9 +59,9 @@ class RecipePostModel(models.Model):
     Tag=models.CharField(choices=Tag, max_length=100,null=True)
     DifficultyLevel=models.CharField(choices=Level, max_length=100,null=True)
     Image=models.ImageField(upload_to='Media/Blog_Pic',null=True)
-    PreparetionTime = models.DateTimeField(auto_now_add=True,null=True)
-    CookingTime = models.DateTimeField(auto_now_add=True,null=True)
-    TotalTime = models.DateTimeField(auto_now=True,null=True)
+    PreparetionTime = models.DateTimeField(default=timezone.now,null=True)
+    CookingTime = models.DateTimeField(default=timezone.now,null=True)
+    TotalTime = models.DateTimeField(default=timezone.now,null=True)
     
     def __str__(self):
         return f"{self.RecipeTitle} "
